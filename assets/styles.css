@@ -1,0 +1,81 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+:root {
+    --primary-color: #a33ff6;
+    --secondary-color: #272424;
+    --terttiary-color: #10b0d4f1;
+}
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    padding: 10px 10px;
+    margin:20px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.btn:active {
+    transform:translate(2px);
+}
+
+.timer {
+    margin: 20px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    text-decoration: underline;
+    padding: 20px 0;
+    
+}
+.instructions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;  
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.start-btn {
+    background-color: var(--primary-color);
+    padding: 10px 10px;
+    margin:20px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.start-btn:active {
+    transform:translate(2px);
+}
+
+
+
+
+
