@@ -14,18 +14,70 @@
           <div class="timer"><p>Clock</p><div id="timer"></div>
         </div>
     </header>
-    <main class="intro" id="intro">
-        <h1><span>Coding Quiz Challenge</span></h1>
-        <div class="instructions"><p>Test your knowledge in this Javascript coding challenge.
-          This is a two minute,<br> multiple choice quiz. Answer as many
-          questions as you can before time runs out.<br> If you get a 
-          question wrong you lose 10 seconds off your clock.<br>  Are you
-          ready to test your skills?<br> Click the start button </p>
-        </div>
+    <main> 
+      <div>
+        <section class="intro" id="intro-container">          
+            <div class="instructions" id="intro">
+              <h1><span>Coding Quiz Challenge</span></h1>
+               <p id="instructions">
+                 Test your knowledge in this Javascript coding challenge.
+                 This is a two minute,<br> multiple choice quiz. Answer as many
+                 questions as you can before time runs out.<br> If you get a 
+                 question wrong you lose 10 seconds off your clock.<br>  Are you
+                 ready to test your skills?<br> Click the start button 
+                </p>
+                <button class="start-btn" id="start-btn">Start Quiz</button> 
+            </div>
+        </section>
+    
+        <section id="questions" class="question-container">
+          <div>
+          <!--questions cont.-->
+            <div>
+              <h4 id="question-displayed">question asked</h4>
+              <ul>
+                <li><button class="answer-button" id="answer-btn-a" value="A">Answer A</button></li>
+                <li><button class="answer-button" id="answer-btn-b" value="B">Answer B</button></li>
+                <li><button class="answer-button" id="answer-btn-c" value="C">Answer C</button></li>
+                <li><button class="answer-button" id="answer-btn-d" value="D">Answer D</button></li>
+              </ul>
+            </div>
+           
+            <!--check answer-->
+            <div id="check-answer" class="check-answer">
+             <p>correct or wrong</p>
+            </div>
+          </div>
+        </section>
+        <!--report section-->
+        <section class="report-section" id="report-section">
+          <div>
+            <h4 id="finished">Finished</h4>
+              <p id="high-score">Your score is: </p>
+              <p>Enter Initials
+               <input id="initials">
+               <button class="initials-btn" id="initials-btn">Log your score</button>
+              </p>
+          </div>
+        </section>
 
-        <div class="start"><button class="start-btn" id="start-btn">Start Quiz</button> 
-        </div>
+        <!--high score section-->
+        <section class="high-score-container" id="high-score-container">
+          <div>
+            <h4>High Scores</h4>
+            <div id="high-scores">Your Record</div><br><br>
+            </div>
+            <div>
+              <button class="try-again-btn" id="try-again-btn">Try again</button>
+              <button class="try-again-btn" id="clear-btn">Clear high Scores</button>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
+    <footer>
+
+    </footer>
 
 
 

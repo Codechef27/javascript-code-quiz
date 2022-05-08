@@ -1,4 +1,8 @@
 
+
+//GIVEN I am taking a code quiz
+//WHEN I click the start button
+//THEN a timer starts and I am presented with a question
 //WHEN I answer a question
 //THEN I am presented with another question
 //WHEN I answer a question incorrectly
@@ -7,12 +11,53 @@
 //THEN the game is over
 //WHEN the game is over
 //THEN I can save my initials and score
-//I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-//THEN a timer starts and I am presented with a question
+//WHEN I click the start button
+//THEN a timer starts
+var questionsArray = [
+  {
+      question: "Questions 1 : String values must be enclosed within _____ when being assigned to variables.",
+      choices: ["a. commas", "b. curly brackets", "c. quotes", "d. parenthesis"],
+      answer: "c"
+  },
+  {
+      question: "Questions 2 : Commonly used data types DO NOT include:",
+      choices: ["a. strings", "b. booleans", "c. alerts", "d. numbers"],
+      answer: "c"
+  },
+  {
+      question: "Questions 3 : How do you create a function in JavaScript",
+      choices: ["a. function = myFunction()", "b. function myFunction()", "c. function:myFunction()", "d. createMyFunction()"],
+      answer: "b"
+  },
+  {
+      question: "Questions 4 : How do you call a function named myFunction?",
+      choices: ["a. call myFunction()", "b. call function myFunction()", "c. myFunction()", "d. call myFunction"],
+      answer: "c"
+  },
+  {
+      question: "Questions 5 : To see if two variables are equal in an if / else statement you would use ____.",
+      choices: ["a. =", "b. ==", "c. 'equals'", "d. !="],
+      answer: "b"
+  },
+  {
+      question: "Questions 6 : The first index of an array is ____.",
+      choices: ["a. 0", "b. 1", "c. 8", "d. any"],
+      answer: "a"
+  },
+  {
+      question: "Questions 7 : How to write an IF statement in JavaScript?",
+      choices: ["a. if i == 5 then", "b. if i = 5 then", "c. if(i == 5)", "d. if i = 5"],
+      answer: "c"
+  },
+  {
+      question: "Questions 8 : Which event occurs when the user clicks on an HTML element?",
+      choices: ["a. onclick", "b. onchange", "c. onmouseover", "d. onmouseclick"],
+      answer: "a"
+  }
+];
 
+//WHEN I click the start button THEN a timer starts
 
-//GIVEN I am taking a code quiz
-//WHEN I click the Start button
 var timerEl = document.getElementById('timer');
 var timeLeft = 75;
 
@@ -30,75 +75,8 @@ function countdown() {
 
 
 
-var startQuizEl = document.getElementById("start-btn");
-
+var startQuizEl = document.getElementById('start-btn')
 startQuizEl.addEventListener("click", function() {
   countdown();
+  
 });
-
-
-var questions = [ 
-  {
-  question: "Commonly used data types DO NOT include:",
-  answers: {
-    1: "strings",
-    2: "booleans",
-    3: "alerts",
-    4: "numbers",
-  },
-  correctAnswer: "alerts",
-},
-
-{
-  question:
-    "The condition in an if/else statement is enclosed within ________.",
-  answers: {
-    1: "quotes",
-    2: "curly brackets",
-    3: "parenthesis",
-    4: "square brackets",
-  },
-  correctAnswer: "curly brackets",
-},
-
-{
-  question: "Arrays in JavaScript can be used to store ____________.",
-  answers: {
-    1: "numbers and strings",
-    2: "other arrays",
-    3: "booleans",
-    4: "all of the above",
-  },
-  correctAnswer: "all of the above",
-},
-
-{
-  question:
-    "String values must be enclosed within ______ when being assigned to variables.",
-  answers: {
-    1: "commas",
-    2: "curly brackets",
-    3: "quotes",
-    4: "parenthesis",
-  },
-  correctAnswer: "quotes",
-},
-
-{
-  question:
-    "A very useful tool used during development and debugging for printing content to the debugger is:",
-  answers: {
-    1: "JavaScript",
-    2: "terminal/bash",
-    3: "for loops",
-    4: "console.log",
-  },
-  correctAnswer: "console.log",
-},
-];
-
-
-
-
-
-
