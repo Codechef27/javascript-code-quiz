@@ -3,8 +3,7 @@
 //GIVEN I am taking a code quiz
 //WHEN I click the start button
 //THEN a timer starts and I am presented with a question
-//WHEN I answer a question
-//THEN I am presented with another question
+
 //WHEN I answer a question incorrectly
 //THEN time is subtracted from the clock
 //WHEN all questions are answered or the timer reaches 0
@@ -41,6 +40,7 @@ var finished = document.querySelector("#finished");
 var tryAgainBtn = document.querySelector("#try-again-btn");
 var clearBtn = document.querySelector("#clear-btn");
 
+//questions
 var questionsArray = [
   {
       question: "Questions 1 : Which event occurs when the user clicks on an HTML element?",
@@ -101,26 +101,75 @@ var questionsArray = [
 
 var timerEl = document.getElementById('timer');
 var timeLeft = 75;
+var questionIndex = 0;
+var endScore = 0;
+var questionCount = 1;
 
 function countdown() {
     var timeInterval = setInterval(function () {
+      timeLeft--;
+      timeLeft.textContent = "Time left: " + timeLeft + " s";
       if (timeLeft  > 0 || timeLeft  == 75 ) {
-        timerEl.textContent = timeLeft;
-        timeLeft--;
-      } else {
-          timerEl.textContent = 'Done';
-        clearInterval(timeInterval);
-      }
-    }, 1000);
-  }
+        timerEl.textContent = 'Done';
+        //if done show on high score
+        finished.textContent = 'Done';
+
+      } else if (questionCount >= questionsArray.length +1) {
+           clearInterval(timeInterval);
+           //gameOver();
+          }
+    } , 1000);
+} 
 
 
  function startQuizEl () {
   countdown();
   introContainer.style.display = "none";
+  questionIndex = 0
+  questions.style.display = "block";
+  renderQuestions (questionIndex);
   
 };
+
+function renderQuestions (n) {
+  questionDisplayed.textContent = questionsArray[n].question;
+  answerBtnA.textContent = questionsArray[n].choices[0];
+  answerBtnB.textContent = questionsArray[n].choices[1];
+  answerBtnC.textContent = questionsArray[n].choices[2];
+  answerBtnD.textContent = questionsArray[n].choices[3];
+  questionIndex = n;
+} 
+// is it wrong or correct
+function checkQuestions(event) {
+  event.preventDefault ();
+  checkAnswer.style.display = "block";
+  hideCheckAnswer(function () {
+    checkAnswer.style.display = "none";
+  }, 3000);
+
+  //answer check
+  if (questionsArray[questionIndex].answer == event.target.value) {
+    checkAnswer.textContent = "Correct"; 
+    totalScore = totalScore + 10;
+  } else {
+      timeLeft = timeLeft - 10;
+      checkAnswer.textContent = "Wrong! The answer is " + questionsArray[questionIndex].answer + " .";  
+    } 
+
+  //WHEN I answer a question THEN I am presented with another question 
+  if (questionIndex < questionsArray.length -1 ) {
+     renderQuestion(questionIndex +1);
+  } else {
+    //gameOver();
+  }
+
+questionCount++;
+}
 
 //event listener's
 
 startBtn.addEventListener("click", startQuizEl);
+
+questionButtons.forEach(function(click) {
+  click.addEventListener("click",checkAnswer);
+});
