@@ -2,23 +2,26 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
-    
-
-    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;   
 }
 :root {
     --primary-color: #a33ff6;
-    --secondary-color: #272424;
-    --terttiary-color: #10b0d4f1;
+
 }
 header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+}
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.btn {
+header .btn {
     background-color: var(--primary-color);
     padding: 10px 10px;
     margin:20px 20px;
@@ -32,29 +35,25 @@ header {
     transform:translate(2px);
 }
 
-header div {
+.timer {
+    padding: 34px;
     font-size: 22px;
     text-align: center;
-}
-
-.timer {
-    padding: 16px 27px;
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    margin: 10px;
 }
 
 .intro {
-     display: flex;
-     justify-content: center;
-     flex-wrap: wrap;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
 }
 h1 {
     text-decoration: underline;
     padding: 20px 0;
-    
-}
-.instructions {
-    text-align: center;
-    font-size: 20px;  
-}
+}    
 
 .start {
     padding-top: 20px;
@@ -74,8 +73,6 @@ h1 {
     transform:translate(2px);
 }
 
-
-
 .question-container {
     text-align: center;
     background-color: aliceblue;
@@ -92,21 +89,18 @@ ul {
     padding: auto;
 }
 
- .answer-button {
+ .choices {
      margin: 10px 0;
      padding: 10px;
      background-color: var(--primary-color);
      font-size: 16px;
      border: none;
- 
+     cursor: pointer;
 }
-.question-container button:active {
+.choices:active {
     transform: translate(2px);   
 }
-.report-section {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.report-container {   
     background-color: aliceblue;
     box-shadow: 0 0 10px 2px var(--secondary-color);
     border-radius: 5px;
@@ -114,7 +108,7 @@ ul {
     padding: 20px 0 ;
     margin: 20px 0;
 }
-.initials-btn {
+.button {
     background-color: var(--primary-color);
     padding: 10px 10px;
     margin:20px 20px;
@@ -123,15 +117,11 @@ ul {
     font-weight: bold;
     border: none;
 }
-.initials-btn:active {
+.button:active {
     transform: translate(2px);
 }
 
-.high-score-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+.highscore-container {
     background-color: aliceblue;
     box-shadow: 0 0 10px 2px var(--secondary-color);
     border-radius: 5px;
@@ -154,7 +144,7 @@ ul {
     transform: translate(2px);
 }
 
-.question-container, .check-answer, .high-score-container, .report-section {
+.question-container, .highscore-container, .report-container {
     display: none;
 }
 

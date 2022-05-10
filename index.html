@@ -1,87 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript Code Quiz</title>
-    <link rel="stylesheet" href="./assets/styles.css">
-</head>
-<body>
+<html>
+  <head>
+    <title>Code Quiz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
     <header>
-        <button class="btn" id="high-scores-check"></id>>>View High Scores<<</button>
-        
-          <div class="timer"><p>Clock</p><div id="timer"></div>
+        <div><!--left corner to view high score-->
+          <button class="btn" id="view-highscore">View Highscores</button>
+        </div><!--right corner to set a timer-->
+        <div class="timer">Clock
+          <p id="timer"></p>
         </div>
-    </header>
-    <main> 
-      <div>
-        <section class="intro" id="intro-container">          
-            <div class="instructions" id="intro">
-              <h1><span>Coding Quiz Challenge</span></h1>
-               <p id="instructions">
-                 Test your knowledge in this Javascript coding challenge.
-                 This is a two minute,<br> multiple choice quiz. Answer as many
-                 questions as you can before time runs out.<br> If you get a 
-                 question wrong you lose 10 seconds off your clock.<br>  Are you
-                 ready to test your skills?<br> Click the start button 
-                </p>
-                <button class="start-btn" id="start-btn">Start Quiz</button> 
-            </div>
-        </section>
-    
-        <section id="questions" class="question-container">
-          <div>
-          <!--questions cont.-->
-            <div>
-              <h4 id="question-displayed">question asked</h4>
-              <ul>
-                <li><button class="answer-button" id="answer-btn-A" value="A"></button></li>
-                <li><button class="answer-button" id="answer-btn-B" value="B"></button></li>
-                <li><button class="answer-button" id="answer-btn-C" value="C"></button></li>
-                <li><button class="answer-button" id="answer-btn-D" value="D"></button></li>
-              </ul>
-            </div>
-           
-            <!--check answer-->
-            <div id="check-answer" class="check-answer">
-             <p>correct or wrong</p>
-            </div>
-          </div>
-        </section>
-        <!--report section-->
-        <section class="report-section" id="score-container">
-          <div>
-            <h4 id="finished">Finished</h4>
-              <p id="score">Your score is: </p>
-              <p>Enter Initials
-               <input id="initials">
-               <button class="initials-btn" id="initials-btn">Log your score</button>
-              </p>
-          </div>
-        </section>
+        </header>
 
-        <!--high score section-->
-        <section class="high-score-container" id="high-score-container">
-          <div>
-            <h4>High Scores</h4>
-            <div id="high-scores">Your Record</div><br><br>
-            </div>
-            <div>
-              <button class="try-again-btn" id="try-again-btn">Try again</button>
-              <button class="try-again-btn" id="clear-btn">Clear high Scores</button>
-            </div>
-          </div>
-        </section>
-      </div>
+    <main>
+        <div>
+            <!--introduction section-->
+            <section class="intro" id="intro-container">
+                <div>
+                    <h1>
+                        Javascript Coding Quiz 
+                    </h1>
+                    <p>
+                        Test your Javascript knowledge in this coding quiz. Answer as many questions as you can before time runs out.<br> 
+                        Get a question wrong, lose 10 seconds off the clock. Get a question right and earn 10 points towards your score.<br>
+                        Ready? Click the start button!
+                    </p>
+                    <button class="start-btn" id="start-btn">Start Quiz</button>
+                </div>
+            </section>
+
+            <!--questions section-->
+            <section class="question-container" id="question-container">
+                <div>
+                    <!--question body-->
+                    <div>
+                        <h2 id = "displayed-question"></h2>
+                        <ul>
+                            <li><button class ="choices" id="answer-btnA" value="A"></button></li>
+                            <li><button class ="choices" id="answer-btnB" value="B"></button></li>
+                            <li><button class ="choices" id="answer-btnC" value="C"></button></li>
+                            <li><button class ="choices" id="answer-btnD" value="D"></button></li>
+                        </ul>
+                    <div>
+
+                    <!--question check-->
+                    <div id="checkEl">
+                        <p></p>
+                    <!-- </div> -->
+                </div>
+            </section>
+
+            <!--final report section-->
+            <section class="report-container" id="report-container">
+                <div>
+                    <h2 id="finish">All Done!</h2>
+                    <p id = "total-score">Your final score is: </p>
+                    <p>Enter initials
+                        <input id="player-initials">
+                        <button class="button" id="save-score-btn">Save Score</button>
+                    </p>
+                </div>
+            </section>
+
+            <!--high score section-->
+            <section class="highscore-container" id ="highscore-container">
+                <div>
+                    <h2>High Scores</h2>
+                    <div id="record"><p></p></div><br><br>
+                    <div>
+                        <button class="button" id="try-again-btn">Try Again</button>
+                        <button class="button" id="clear-btn">Clear Scores</button>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer>
-
-    </footer>
-
-
-
-<script src="./assets/js/script.js"></script>
-    
-</body>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
