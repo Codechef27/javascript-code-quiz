@@ -1,16 +1,3 @@
-/*Acceptance Criteria*/
-    // GIVEN I am taking a code quiz
-    // WHEN I click the start button
-    // THEN a timer starts and I am presented with a question
-    // WHEN I answer a question
-    // THEN I am presented with another question
-    // WHEN I answer a question incorrectly
-    // THEN time is subtracted from the clock
-    // WHEN all questions are answered or the timer reaches 0
-    // THEN the game is over
-    // WHEN the game is over
-    // THEN I can save my initials and my score
-
 
     var startBtn = document.querySelector("#start-btn");
     var introContainer = document.querySelector("#intro-container");
@@ -31,7 +18,7 @@
     
     var saveScoreBtn = document.querySelector("#save-score-btn");
     var highScoreContainer = document.querySelector("#highscore-container");
-    var record = document.querySelector("#record");
+    var recordScoreEl = document.querySelector("#record");
     var viewHighscore = document.querySelector("#view-highscore");
     var finish = document.querySelector("#finish");
     
@@ -52,7 +39,7 @@
       },
       {
         question: "Question 3 : Commonly used data types DO NOT include:",
-        choices: ["a. strings", "b. booleans", "c. alerts", "d. numbers"],
+        choices: ["A. strings", "B. booleans", "C. alerts", "D. numbers"],
         answer: "C"
       },
       {
@@ -86,13 +73,7 @@
         choices: ["A. true", "B. false", "C. NaN", "D. syntaxError"],
         answer: "A"
     
-      },
-      {
-        question: "question 10 : Who is the best Programmer?",
-        choices: ["A. Ronny", "B. Gary", "C. Jonathan", "D. Charles" ],
-        answer: ["A", "B", "C", "D"]
-      }
-          
+      },  
     ];
 
         //Set other variables
@@ -130,11 +111,11 @@
             questionContainer.style.display = "block";
             questionIndex = 0
             countdown();
-            showQuestion(questionIndex);
+            renderQuestion(questionIndex);
           
     }
         //present the questions and answers
-    function showQuestion (n) {
+    function renderQuestion (n) {
             displayedQuestion.textContent = questionArray[n].question;
             answerBtnA.textContent = questionArray[n].choices[0];
             answerBtnB.textContent = questionArray[n].choices[1];
@@ -163,8 +144,8 @@
         }
              //THEN I am presented with another question
         if (questionIndex < questionArray.length -1 ) {
-        // call showQuestions to bring in next question when any reactBtn is clicked
-            showQuestion(questionIndex +1);
+        // call renderQuestions to bring in next question when any answertBtn is clicked
+            renderQuestion(questionIndex +1);
         } else {
         gameOver();
     }
@@ -173,53 +154,60 @@
         //WHEN all questions are answered or the timer reaches 0, Game is over
     function gameOver() {
     
-        questionContainer.style.display = "none";
-        pointsReport.style.display = "block";
-        playerScore.textContent = "You scored :" + totalScore + " points"; 
-        clock.style.display = "none"; 
+      questionContainer.style.display = "none";
+      pointsReport.style.display = "block";
+      playerScore.textContent = "You scored :" + totalScore + " points"; 
+      clock.style.display = "none"; 
+      console.log(pointsReport);
     };
-    
-    // get current score and initials from local storage
-    function getScore () {
-        var currentList =localStorage.getItem("ScoreList");
-        if (currentList !== null ){
-            freshList = JSON.parse(currentList);
-            return freshList;
-        } else {
-            freshList = [];
-        }
-        return freshList;
-    };
-    
-    
-    // render score to the score board
-    function renderScore () {
-        pointsReport.innerHTML = "";
-        record.style.display ="block";
-        var li = document.createElement("li");
-        li.textContent = record ;
-        record.appendChild(li);
-       // console.log(record)
-    };
-    
-   
-    // push new score and initial to the local storage
-    function addItem (n) {
-        var addedList = getScore();
-        addedList.push(n);
-        localStorage.setItem("ScoreList", JSON.stringify(addedList));
-    };
-    
-    function saveScore () {
-        var scoreItem ={
-            user: playerInitials.value,
-            score: totalScore
-        }
-        addItem(scoreItem);
-        renderScore();
+ 
+  function getScore () {
+    var currentList = localStorage.getItem("ScoreList");
+      if (currentList !== null ){
+          freshList = JSON.parse(currentList);
+          return freshList;
+      } else {
+          freshList = [];
+      }
+      return freshList;
+  };
+
+  function renderScore () {
+    recordScoreEl.innerHTML = "";
+    recordScoreEl.style.display ="block";
+    var highScores = getScore();   
+    for (var i = 0; i < highScores.length; i++) {
+       var item = highScores[i];
+    var li = document.createElement("li");
+    li.textContent = item.user + " - " + item.score;
+    li.setAttribute("scoreList", i);
+    recordScoreEl.appendChild(li);
     }
-    
+  };
+
+  // push new score and initial to the local storage
+  function addItem (n) {
+      var addedList = getScore();
+      addedList.push(n);
+      localStorage.setItem("ScoreList", JSON.stringify(addedList));
+  };
   
+  function saveScore () {
+      var scoreItem ={
+        user: playerInitials.value,
+        score: totalScore
+      }
+      addItem(scoreItem);
+      renderScore();
+  }
+  
+  function clearScore() {
+    //localStorage.removeItem(scoreItem);
+    localStorage.clear();
+    location.reload
+  };
+
+    // eventlistners
     // startbtn to start the quiz
     startBtn.addEventListener("click", startQuiz);
     
@@ -239,17 +227,18 @@
         saveScore();
     });
     
-    // check highscore s
+    // check highscore 
     viewHighscore.addEventListener("click", function(event) {
         event.preventDefault();
         pointsReport.style.display = "none";
         introContainer.style.display = "none";
         highScoreContainer.style.display = "block";
         questionContainer.style.display ="none";
+        getScore();
         renderScore();
     });
     
-    //go back to main page
+    //go back to intro page
     tryAgainBtn.addEventListener("click",function(event){
         event.preventDefault();
         pointsReport.style.display = "none";
@@ -263,5 +252,6 @@
     clearBtn.addEventListener("click",function(event) {
         event.preventDefault();
         localStorage.clear();
+        clearScore();
         renderScore();
     });

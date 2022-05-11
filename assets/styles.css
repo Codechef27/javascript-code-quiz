@@ -96,6 +96,8 @@ ul {
      font-size: 16px;
      border: none;
      cursor: pointer;
+     width: max-content;
+     text-align: left;
 }
 .choices:active {
     transform: translate(2px);   
