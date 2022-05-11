@@ -18,7 +18,11 @@ The user can interact with the application and log highscores.
 2. css 
 3. javascript
 
-![](./assets/images/Untitled_%20May%2011%2C%202022%201_03%20PM.mp4)
+
+https://user-images.githubusercontent.com/99765357/167910504-01443af3-7b1c-4269-aa21-8704cc44aa61.mp4
+
+
+
 
 
 ## Contribution
