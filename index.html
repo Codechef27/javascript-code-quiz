@@ -1,35 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript Code Quiz</title>
-    <link rel="stylesheet" href="./assets/styles.css">
-</head>
-<body>
-    <header>
-        <button class="btn" id="high-scores"></id>>>View High Scores<<</button>
-        <div class="timer" id="timer">
-            <p>Clock</p>
-        </div>
-    </header>
-    <main class="intro" id="intro">
-        <h1><span>Coding Quiz Challenge</span></h1>
-        <div class="instructions"><p>Test your knowledge in this Javascript coding challenge.
-          This is a two minute,<br> multiple choice quiz. Answer as many
-          questions as you can before time runs out.<br> If you get a 
-          question wrong you lose 10 seconds off your clock.<br>  Are you
-          ready to test your skills?<br> Click the start button </p>
-        </div>
+<html>
+  <head>
+    <title>Code Quiz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
 
-        <div class="start"><button class="start-btn" id="start-btn">Start Quiz</button> 
+  <body>
+    <header>
+        <div><!--left corner to view high score-->
+          <button class="btn" id="view-highscore">View Highscores</button>
+        </div><!--right corner to set a timer-->
+        <div class="timer">Clock
+          <p id="timer"></p>
+        </div>
+        </header>
+
+    <main>
+        <div>
+            <!--introduction section-->
+            <section class="intro" id="intro-container">
+                <div>
+                    <h1>
+                        Javascript Coding Quiz 
+                    </h1>
+                    <p>
+                        Test your Javascript knowledge in this coding quiz. Answer as many questions as you can before time runs out.<br> 
+                        Get a question wrong, lose 10 seconds off the clock. Get a question right and earn 10 points towards your score.<br>
+                        Ready? Click the start button!
+                    </p>
+                    <button class="start-btn" id="start-btn">Start Quiz</button>
+                </div>
+            </section>
+
+            <!--questions section-->
+            <section class="question-container" id="question-container">
+                <div>
+                    <!--question body-->
+                    <div>
+                        <h2 id = "displayed-question"></h2>
+                        <ul>
+                            <li><button class ="choices" id="answer-btnA" value="A"></button></li>
+                            <li><button class ="choices" id="answer-btnB" value="B"></button></li>
+                            <li><button class ="choices" id="answer-btnC" value="C"></button></li>
+                            <li><button class ="choices" id="answer-btnD" value="D"></button></li>
+                        </ul>
+                    <div>
+
+                    <!--question check-->
+                    <div class = "checkEl" id="checkEl">
+                        <p></p>
+                    <!-- </div> -->
+                </div>
+            </section>
+
+            <!--final report section-->
+            <section class="report-container" id="report-container">
+                <div>
+                    <h2 id="finish">All Done!</h2>
+                    <p id = "total-score">Your final score is: </p>
+                    <p>Enter initials
+                        <input id="player-initials">
+                        <button class="button" id="save-score-btn">Save Score</button>
+                    </p>
+                </div>
+            </section>
+
+            <!--high score section-->
+            <section class="highscore-container" id ="highscore-container">
+                <div>
+                    <h2>High Scores</h2>
+                     <ul id="record"></ul><br><br>
+                    <div>
+                        <button class="button" id="try-again-btn">Try Again</button>
+                        <button class="button" id="clear-btn">Clear Scores</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
-
-
-
-<script src="./assets/js/script.js"></script>
-    
-</body>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
